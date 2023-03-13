@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-svc
+spec:
+  selector:
+    app: c8demo
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lb-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: c8demo
+  template:
+    metadata:
+      labels:
+        app: c8-k8
+  spec:
+  containers:
+  - name: c8-k8
+    image: srimankiwi/myimage:latest
+    imagePullPolicy: Always

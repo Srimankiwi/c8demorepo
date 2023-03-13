@@ -27,5 +27,5 @@ spec:
   spec:
   containers:
   - name: c8-k8
-    image: srimankiwi/myimage:latest
+    image: srimankiwi/c8demoimage:latest
     imagePullPolicy: Always
